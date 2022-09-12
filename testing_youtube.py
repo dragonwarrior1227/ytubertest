@@ -21,7 +21,7 @@ print("Your Computer IP Address is:" + IPAddr)
 # options = Options()
 
 
-
+print(subprocess.Popen("yum localinstall google-chrome-stable-105.0.5195.102-1.x86_64.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
 print(subprocess.Popen("google-chrome-stable --version",shell=True,stdout=subprocess.PIPE).communicate()[0])
 print(subprocess.Popen("whereis google-chrome-stable",shell=True,stdout=subprocess.PIPE).communicate()[0])
 print(os.listdir(os.getcwd()))
