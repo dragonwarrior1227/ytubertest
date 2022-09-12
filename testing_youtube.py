@@ -22,7 +22,9 @@ print("Your Computer IP Address is:" + IPAddr)
 
 
 
-# print(subprocess.Popen("npm install chromium-version@77",shell=True,stdout=subprocess.PIPE).communicate()[0])
+print(subprocess.Popen("google-chrome-stable --version",shell=True,stdout=subprocess.PIPE).communicate()[0])
+print(subprocess.Popen("whereis google-chrome-stable",shell=True,stdout=subprocess.PIPE).communicate()[0])
+
 # chrome_path=r"{}/node_modules/chromium-version/lib/chromium/chrome-linux/chrome".format(os.getcwd())
 
 # os.environ['CHROME_PATH']=chrome_path
