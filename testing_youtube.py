@@ -53,7 +53,7 @@ options.add_argument('--disable-dev-shm-usage')
 # options.add_argument("--proxy-server={}".format(py))
 # options.add_argument('--user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1')
 # options.add_argument("--incognito")
-# options.add_extension('vpn.crx')
+options.add_extension('vpn.crx')
 
 
 # options.add_experimental_option("debuggerAddress", "127.0.0.1:8989")
@@ -65,7 +65,24 @@ except Exception as e:
 
 
 
+driver.get("chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/popup/index.html")
+time.sleep(3)
 
+print(driver.window_handles)
+if len(driver.window_handles)>1:
+    driver.switch_to.window(window_name=driver.window_handles[1])
+    driver.close()
+driver.switch_to.window(window_name=driver.window_handles[0])
+time.sleep(3)
+
+btn=driver.find_element(By.XPATH,"/html/body/div/div/div[2]/div/div/div/button[2]").click()
+time.sleep(1)
+btn=driver.execute_script("return document.getElementsByClassName('select_location__button-box')[0].children[1].click()")
+vpn_count=driver.execute_script("return document.getElementsByClassName('locations')[0].childElementCount")
+random_vpn=random.randint(1,vpn_count)
+print(vpn_count,random_vpn)
+driver.execute_script("return document.getElementsByClassName('locations')[0].children[{}].click()".format(random_vpn))
+time.sleep(2)
 
 
 print("Your Computer Name2 is:" + hostname)    
