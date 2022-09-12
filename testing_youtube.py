@@ -13,6 +13,11 @@ from webdriver_manager.chrome import ChromeDriverManager
 import os,sys, stat
 import subprocess
 from utilities import *
+from pyvirtualdisplay import Display
+
+
+display = Display(visible=0, size=(800, 600))
+display.start()
 
 hostname = socket.gethostname()    
 IPAddr = socket.gethostbyname(hostname)    
@@ -21,11 +26,13 @@ print("Your Computer IP Address is:" + IPAddr)
 # options = Options()
 
 
-# print(subprocess.Popen("yum localinstall google-chrome-stable-105.0.5195.102-1.x86_64.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
-# print(subprocess.Popen("google-chrome-stable --version",shell=True,stdout=subprocess.PIPE).communicate()[0])
-# print(subprocess.Popen("whereis google-chrome-stable",shell=True,stdout=subprocess.PIPE).communicate()[0])
-# print(os.listdir(os.getcwd()))
-# print(os.listdir(os.getcwd()+'/google-chrome-stable'))
+print(subprocess.Popen("yum localinstall google-chrome-stable-105.0.5195.102-1.x86_64.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
+print(subprocess.Popen("google-chrome-stable --version",shell=True,stdout=subprocess.PIPE).communicate()[0])
+print(subprocess.Popen("whereis google-chrome-stable",shell=True,stdout=subprocess.PIPE).communicate()[0])
+
+print(subprocess.Popen("yum install xorg-x11-server-Xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
+print(subprocess.Popen("xvfb-run google-chrome --remote-debugging-port=9222 --disable-gpu ",shell=True,stdout=subprocess.PIPE).communicate()[0])
+
 # chrome_path=r"{}/node_modules/chromium-version/lib/chromium/chrome-linux/chrome".format(os.getcwd())
 
 chrome_path=r"/usr/bin/google-chrome-stable"
@@ -105,3 +112,4 @@ driver.quit()
 
 
 
+display.stop()
