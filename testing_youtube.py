@@ -53,7 +53,7 @@ options.add_argument('--disable-dev-shm-usage')
 # options.add_argument("--proxy-server={}".format(py))
 # options.add_argument('--user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1')
 # options.add_argument("--incognito")
-options.add_extension('vpn.crx')
+options.add_extension('chrome/vpn.crx')
 
 
 # options.add_experimental_option("debuggerAddress", "127.0.0.1:8989")
