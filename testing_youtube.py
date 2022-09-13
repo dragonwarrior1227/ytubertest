@@ -1,67 +1,41 @@
 from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
 import random 
-import socket 
-from webdriver_manager.chrome import ChromeDriverManager
 import os,sys, stat
 import subprocess
 from utilities import *
-from pyvirtualdisplay import Display
-
-
-hostname = socket.gethostname()    
-IPAddr = socket.gethostbyname(hostname)    
-print("Your Computer Name is:" + hostname)    
-print("Your Computer IP Address is:" + IPAddr)
-# options = Options()
 
 
 print(subprocess.Popen("yum localinstall google-chrome-stable-105.0.5195.102-1.x86_64.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
-print(subprocess.Popen("google-chrome-stable --version",shell=True,stdout=subprocess.PIPE).communicate()[0])
-print(subprocess.Popen("whereis google-chrome-stable",shell=True,stdout=subprocess.PIPE).communicate()[0])
-
-print(subprocess.Popen("yum install xorg-x11-server-Xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
-print(subprocess.Popen("xvfb-run google-chrome --remote-debugging-port=9222 --disable-gpu ",shell=True,stdout=subprocess.PIPE).communicate()[0])
-
-
-
-display = Display(visible=0, size=(800, 600))
-display.start()
-
-# chrome_path=r"{}/node_modules/chromium-version/lib/chromium/chrome-linux/chrome".format(os.getcwd())
 
 chrome_path=r"/usr/bin/google-chrome-stable"
 os.environ['CHROME_PATH']=chrome_path
 binary_path=os.environ.get('CHROME_PATH')
-
 path=r"chrome/chromedriver"
-# path=r'chromedriver.exe'
 os.chmod(path, 0o777)
-options = Options()
 
+options = Options()
 options.binary_location =binary_path
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
+
+
 # options.add_argument("--proxy-server={}".format(py))
 # options.add_argument('--user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1')
 # options.add_argument("--incognito")
-options.add_extension('chrome/vpn.crx')
+# options.add_extension('chrome/vpn.crx')
 
 
-# options.add_experimental_option("debuggerAddress", "127.0.0.1:8989")
+
 try:
     driver = webdriver.Chrome(executable_path=path,chrome_options=options)
 except Exception as e:
     print(e)
-    driver = webdriver.Chrome(ChromeDriverManager().install(),chrome_options=options)
+    
 
 
 
