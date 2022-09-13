@@ -25,9 +25,9 @@ try:
     # print(subprocess.Popen("mv /usr/bin/firefox /usr/bin/backup_firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
     # print(subprocess.Popen("""echo "exclude=firefox" >> /etc/dnf/dnf.conf""",shell=True,stdout=subprocess.PIPE).communicate()[0])
     # print(subprocess.Popen("""ln -s /usr/local/firefox/firefox /usr/bin/firefox""",shell=True,stdout=subprocess.PIPE).communicate()[0])
-    
+    print(subprocess.Popen("/usr/local/firefox/firefox --help",shell=True,stdout=subprocess.PIPE).communicate()[0])
     options = Options()
-    options.binary_location =r'/usr/local/firefox'
+    options.binary_location =r'/usr/local/firefox/firefox'
     options.add_argument('--headless')
     # options.add_argument('--no-sandbox')
     # options.add_argument('--disable-dev-shm-usage')
