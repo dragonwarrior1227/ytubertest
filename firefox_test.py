@@ -19,7 +19,7 @@ try:
     # print(subprocess.Popen("tar -jxvf firefox.bz2 -C /usr/local/",shell=True,stdout=subprocess.PIPE).communicate()[0])
     # print(subprocess.Popen("rm -rf /usr/bin/firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
     # print(subprocess.Popen("ln -s /usr/local/firefox/firefox /usr/bin/firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
-    print(subprocess.Popen(" yum local install firefox.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
+    print(subprocess.Popen(" yum localinstall firefox.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
 
     print(subprocess.Popen("firefox --version",shell=True,stdout=subprocess.PIPE).communicate()[0])
     options = Options()
