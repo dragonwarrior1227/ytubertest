@@ -27,6 +27,7 @@ try:
     # print(subprocess.Popen("""ln -s /usr/local/firefox/firefox /usr/bin/firefox""",shell=True,stdout=subprocess.PIPE).communicate()[0])
     print(subprocess.Popen(os.getcwd()+"/browser/firefox/firefox --help",shell=True,stdout=subprocess.PIPE).communicate()[0])
     options = Options()
+    
     options.binary_location =os.getcwd()+'/browser/firefox/firefox'
     options.add_argument('--headless')
     # options.add_argument('--no-sandbox')
