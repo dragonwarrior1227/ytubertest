@@ -2,7 +2,7 @@ from selenium import webdriver
 import time
 import os,sys, stat
 import subprocess
-from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
+# from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.firefox.options import Options
 
 from webdriver_manager.firefox import GeckoDriverManager
@@ -15,7 +15,8 @@ try:
     # you need to know the full path to the geckodriver executable file and use it as:
     # binary = FirefoxBinary('')
     # print(os.environ.get('PATH'))
-    print(subprocess.Popen("yum localinstall firefox.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
+
+    print(subprocess.Popen("tar -jxvf firefox.bz2 -C /usr/bin/",shell=True,stdout=subprocess.PIPE).communicate()[0])
     options = Options()
     options.binary_location =r'/usr/bin/firefox'
     options.add_argument('--headless')
