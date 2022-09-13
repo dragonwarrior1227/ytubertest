@@ -16,18 +16,18 @@ try:
     # binary = FirefoxBinary('')
     # print(os.environ.get('PATH'))
 
-    # print(subprocess.Popen("tar -jxvf firefox.bz2 -C /usr/local/",shell=True,stdout=subprocess.PIPE).communicate()[0])
-    # print(subprocess.Popen("rm -rf /usr/bin/firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
-    # print(subprocess.Popen("ln -s /usr/local/firefox/firefox /usr/bin/firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
-    # print(subprocess.Popen(" yum localinstall firefox.rpm --skip-broken",shell=True,stdout=subprocess.PIPE).communicate()[0])
-    print(subprocess.Popen("yum install wget",shell=True,stdout=subprocess.PIPE).communicate()[0])
-    print(subprocess.Popen("""wget -O- "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US" | tar -jx -C /usr/local/""",shell=True,stdout=subprocess.PIPE).communicate()[0])
-    print(subprocess.Popen("mv /usr/bin/firefox /usr/bin/backup_firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
-    print(subprocess.Popen("""echo "exclude=firefox" >> /etc/dnf/dnf.conf""",shell=True,stdout=subprocess.PIPE).communicate()[0])
-    print(subprocess.Popen("""ln -s /usr/local/firefox/firefox /usr/bin/firefox""",shell=True,stdout=subprocess.PIPE).communicate()[0])
+    print(subprocess.Popen("tar -jxvf firefox.bz2 -C /usr/local/",shell=True,stdout=subprocess.PIPE).communicate()[0])
+    # # print(subprocess.Popen("rm -rf /usr/bin/firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
+    # # print(subprocess.Popen("ln -s /usr/local/firefox/firefox /usr/bin/firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
+    # # print(subprocess.Popen(" yum localinstall firefox.rpm --skip-broken",shell=True,stdout=subprocess.PIPE).communicate()[0])
+    # print(subprocess.Popen("yum install wget",shell=True,stdout=subprocess.PIPE).communicate()[0])
+    # print(subprocess.Popen("""wget -O- "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US" | tar -jx -C /usr/local/""",shell=True,stdout=subprocess.PIPE).communicate()[0])
+    # print(subprocess.Popen("mv /usr/bin/firefox /usr/bin/backup_firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
+    # print(subprocess.Popen("""echo "exclude=firefox" >> /etc/dnf/dnf.conf""",shell=True,stdout=subprocess.PIPE).communicate()[0])
+    # print(subprocess.Popen("""ln -s /usr/local/firefox/firefox /usr/bin/firefox""",shell=True,stdout=subprocess.PIPE).communicate()[0])
     
     options = Options()
-    options.binary_location =r'/usr/bin/firefox'
+    options.binary_location =r'/usr/local/firefox'
     options.add_argument('--headless')
     # options.add_argument('--no-sandbox')
     # options.add_argument('--disable-dev-shm-usage')
