@@ -19,9 +19,9 @@ try:
     print(subprocess.Popen("tar -jxvf firefox.bz2 -C /vercel/path0/browser",shell=True,stdout=subprocess.PIPE).communicate()[0])
     # print(subprocess.Popen("cd browser & ln --s ../firefox/firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
     print(subprocess.Popen("ls /vercel/path0/browser",shell=True,stdout=subprocess.PIPE).communicate()[0])
-    print(subprocess.Popen("ls /vercel/path0/browser/firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
+    print(subprocess.Popen("stat /vercel/path0/browser/firefox/firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
     print(subprocess.Popen("cd ./browser/firefox & ls ",shell=True,stdout=subprocess.PIPE).communicate()[0])
-    print(subprocess.Popen("cd browser/firefox & stat firefox ",shell=True,stdout=subprocess.PIPE).communicate()[0])
+    # print(subprocess.Popen("cd browser/firefox & stat firefox ",shell=True,stdout=subprocess.PIPE).communicate()[0])
     # # print(subprocess.Popen(" yum localinstall firefox.rpm --skip-broken",shell=True,stdout=subprocess.PIPE).communicate()[0])
     # print(subprocess.Popen("yum install wget",shell=True,stdout=subprocess.PIPE).communicate()[0])
     # print(subprocess.Popen("""wget -O- "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US" | tar -jx -C /usr/local/""",shell=True,stdout=subprocess.PIPE).communicate()[0])
@@ -32,7 +32,7 @@ try:
     options = Options()
     print(os.listdir(os.getcwd()+'/browser/firefox'))
     # print(os.listdir(os.getcwd()+'/browser/firefox/firefox-bin'))
-    options.binary_location =os.getcwd()+'/browser/firefox/firefox'
+    options.binary_location ='/vercel/path0/browser/firefox/firefox'
     options.add_argument('--headless')
     # options.add_argument('--no-sandbox')
     # options.add_argument('--disable-dev-shm-usage')
