@@ -9,7 +9,7 @@ import subprocess
 from utilities import *
 
 
-print(subprocess.Popen("yum localinstall google-chrome-stable-105.0.5195.102-1.x86_64.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
+print(subprocess.Popen("yum localinstall google-chrome-stable.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
 
 chrome_path=r"/usr/bin/google-chrome-stable"
 os.environ['CHROME_PATH']=chrome_path
@@ -36,7 +36,7 @@ try:
 except Exception as e:
     print(e)
 
-print(subprocess.Popen("ls ~/.config/google-chrome/Default/Extensions/",shell=True,stdout=subprocess.PIPE).communicate()[0])    
+print(subprocess.Popen("ls ~/.config",shell=True,stdout=subprocess.PIPE).communicate()[0])    
 
 
 
