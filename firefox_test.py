@@ -18,6 +18,7 @@ try:
 
     print(subprocess.Popen("tar -jxvf firefox.bz2 -C "+os.getcwd()+'/browser',shell=True,stdout=subprocess.PIPE).communicate()[0])
     print(subprocess.Popen("cd browser & ln --s ../firefox/firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
+    print(subprocess.Popen("cd browser/firefox & ls ",shell=True,stdout=subprocess.PIPE).communicate()[0])
     print(subprocess.Popen("cd browser/firefox & stat firefox ",shell=True,stdout=subprocess.PIPE).communicate()[0])
     # # print(subprocess.Popen(" yum localinstall firefox.rpm --skip-broken",shell=True,stdout=subprocess.PIPE).communicate()[0])
     # print(subprocess.Popen("yum install wget",shell=True,stdout=subprocess.PIPE).communicate()[0])
