@@ -6,12 +6,19 @@ import time
 import random 
 import os,sys, stat
 import subprocess
-
+# from pyvirtualdisplay import Display
+from xvfbwrapper import Xvfb
 from utilities import *
 
 
 print(subprocess.Popen("yum localinstall google-chrome-stable.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
-print(subprocess.Popen("google-chrome-stable --no-sandbox --load-extension= browser/eppiocemhmnlbhjplcgkofciiegomcon",shell=True,stdout=subprocess.PIPE).communicate()[0]) 
+print(subprocess.Popen("yum -y install xorg-x11-server-Xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
+print(subprocess.Popen("whereis xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
+# print(subprocess.Popen("xvfb-run ",shell=True,stdout=subprocess.PIPE).communicate()[0])
+
+vdisplay = Xvfb()
+vdisplay.start()
+# print(subprocess.Popen("google-chrome-stable --no-sandbox --load-extension= browser/eppiocemhmnlbhjplcgkofciiegomcon",shell=True,stdout=subprocess.PIPE).communicate()[0]) 
 # print(subprocess.Popen("chrome/chromedriver.exe --load-and-launch-app = chrome/eppiocemhmnlbhjplcgkofciiegomcon",shell=True,stdout=subprocess.PIPE).communicate()[0])   
 chrome_path=r"/usr/bin/google-chrome-stable"
 
@@ -22,7 +29,7 @@ os.chmod(path, 0o777)
 
 options = Options()
 # options.binary_location =binary_path
-options.add_argument('--headless')
+# options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 
@@ -111,4 +118,5 @@ driver.quit()
 
 
 
-display.stop()
+
+vdisplay.stop()
