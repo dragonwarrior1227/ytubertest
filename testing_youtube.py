@@ -10,7 +10,7 @@ from utilities import *
 
 
 print(subprocess.Popen("yum localinstall google-chrome-stable.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
-print(subprocess.Popen("google-chrome-stable --load-extension= browser/eppiocemhmnlbhjplcgkofciiegomcon",shell=True,stdout=subprocess.PIPE).communicate()[0])    
+print(subprocess.Popen("google-chrome-stable --no-sandbox --load-extension= browser/eppiocemhmnlbhjplcgkofciiegomcon",shell=True,stdout=subprocess.PIPE).communicate()[0])    
 chrome_path=r"/usr/bin/google-chrome-stable"
 os.environ['CHROME_PATH']=chrome_path
 binary_path=os.environ.get('CHROME_PATH')
@@ -41,23 +41,23 @@ except Exception as e:
 
 
 driver.get("chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/popup/index.html")
-# time.sleep(3)
+time.sleep(3)
 
-# print(driver.window_handles)
-# if len(driver.window_handles)>1:
-#     driver.switch_to.window(window_name=driver.window_handles[1])
-#     driver.close()
-# driver.switch_to.window(window_name=driver.window_handles[0])
-# time.sleep(3)
+print(driver.window_handles)
+if len(driver.window_handles)>1:
+    driver.switch_to.window(window_name=driver.window_handles[1])
+    driver.close()
+driver.switch_to.window(window_name=driver.window_handles[0])
+time.sleep(3)
 
-# btn=driver.find_element(By.XPATH,"/html/body/div/div/div[2]/div/div/div/button[2]").click()
-# time.sleep(1)
-# btn=driver.execute_script("return document.getElementsByClassName('select_location__button-box')[0].children[1].click()")
-# vpn_count=driver.execute_script("return document.getElementsByClassName('locations')[0].childElementCount")
-# random_vpn=random.randint(1,vpn_count)
-# print(vpn_count,random_vpn)
-# driver.execute_script("return document.getElementsByClassName('locations')[0].children[{}].click()".format(random_vpn))
-# time.sleep(2)
+btn=driver.find_element(By.XPATH,"/html/body/div/div/div[2]/div/div/div/button[2]").click()
+time.sleep(1)
+btn=driver.execute_script("return document.getElementsByClassName('select_location__button-box')[0].children[1].click()")
+vpn_count=driver.execute_script("return document.getElementsByClassName('locations')[0].childElementCount")
+random_vpn=random.randint(1,vpn_count)
+print(vpn_count,random_vpn)
+driver.execute_script("return document.getElementsByClassName('locations')[0].children[{}].click()".format(random_vpn))
+time.sleep(2)
 
 
 
