@@ -11,15 +11,17 @@ from utilities import *
 
 
 print(subprocess.Popen("yum localinstall google-chrome-stable.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
-print(subprocess.Popen("google-chrome-stable --no-sandbox --load-extension= browser/eppiocemhmnlbhjplcgkofciiegomcon",shell=True,stdout=subprocess.PIPE).communicate()[0])    
+print(subprocess.Popen("google-chrome-stable --no-sandbox --load-extension= browser/eppiocemhmnlbhjplcgkofciiegomcon",shell=True,stdout=subprocess.PIPE).communicate()[0]) 
+# print(subprocess.Popen("chrome/chromedriver.exe --load-and-launch-app = chrome/eppiocemhmnlbhjplcgkofciiegomcon",shell=True,stdout=subprocess.PIPE).communicate()[0])   
 chrome_path=r"/usr/bin/google-chrome-stable"
+
 os.environ['CHROME_PATH']=chrome_path
 binary_path=os.environ.get('CHROME_PATH')
-path=r"chrome/chromedriver"
+# path=r"chrome/chromedriver.exe"
 os.chmod(path, 0o777)
 
 options = Options()
-options.binary_location =binary_path
+# options.binary_location =binary_path
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
@@ -28,7 +30,7 @@ options.add_argument('--disable-dev-shm-usage')
 # options.add_argument("--proxy-server={}".format(py))
 # options.add_argument('--user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1')
 # options.add_argument("--incognito")
-# options.add_extension('chrome/vpn.crx')
+options.add_extension('chrome/vpn.crx')
 
 
 
@@ -43,7 +45,8 @@ except Exception as e:
 
 driver.get("chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/popup/index.html")
 time.sleep(3)
-
+driver.save_screenshot("bits2.png")
+upload_basic("bits2.png")
 print(driver.window_handles)
 if len(driver.window_handles)>1:
     driver.switch_to.window(window_name=driver.window_handles[1])
