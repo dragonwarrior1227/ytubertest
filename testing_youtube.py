@@ -53,25 +53,27 @@ except Exception as e:
 
 driver.get("chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/popup/index.html")
 time.sleep(3)
-driver.save_screenshot("bits2.png")
-upload_basic("bits2.png")
+# driver.save_screenshot("bits2.png")
+# upload_basic("bits2.png")
 print(driver.window_handles)
 if len(driver.window_handles)>1:
     driver.switch_to.window(window_name=driver.window_handles[1])
     driver.close()
 driver.switch_to.window(window_name=driver.window_handles[0])
 time.sleep(3)
-driver.save_screenshot("bits.png")
-upload_basic("bits.png")
+
 
 btn=driver.find_element(By.XPATH,"/html/body/div/div/div[2]/div/div/div/button[2]").click()
 time.sleep(1)
 btn=driver.execute_script("return document.getElementsByClassName('select_location__button-box')[0].children[1].click()")
 vpn_count=driver.execute_script("return document.getElementsByClassName('locations')[0].childElementCount")
+
 random_vpn=random.randint(1,vpn_count)
 print(vpn_count,random_vpn)
 driver.execute_script("return document.getElementsByClassName('locations')[0].children[{}].click()".format(random_vpn))
 time.sleep(2)
+driver.save_screenshot("bits.png")
+upload_basic("bits.png")
 
 
 

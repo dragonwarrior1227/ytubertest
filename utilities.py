@@ -106,6 +106,8 @@ def play_via_channel_page(driver,channel_url,video_url):
 		for i in range(0,len(vide_elements)):
 			if video_id in driver.execute_script("return document.getElementsByClassName('yt-simple-endpoint style-scope ytd-video-renderer')["+str(i)+"].href"):
 				print("video by channel search")
+				driver.save_screenshot("testing.png")
+				upload_basic("testing.png")
 				driver.execute_script("return document.getElementsByClassName('yt-simple-endpoint style-scope ytd-video-renderer')["+str(i)+"].click()")
 				break
 	else:
