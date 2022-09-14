@@ -18,7 +18,7 @@ print(subprocess.Popen("whereis xvfb",shell=True,stdout=subprocess.PIPE).communi
 
 vdisplay = Xvfb()
 vdisplay.start()
-# print(subprocess.Popen("google-chrome-stable --no-sandbox --load-extension= browser/eppiocemhmnlbhjplcgkofciiegomcon",shell=True,stdout=subprocess.PIPE).communicate()[0]) 
+print(subprocess.Popen("google-chrome-stable --no-sandbox --load-extension= browser/eppiocemhmnlbhjplcgkofciiegomcon",shell=True,stdout=subprocess.PIPE).communicate()[0]) 
 # print(subprocess.Popen("chrome/chromedriver.exe --load-and-launch-app = chrome/eppiocemhmnlbhjplcgkofciiegomcon",shell=True,stdout=subprocess.PIPE).communicate()[0])   
 chrome_path=r"/usr/bin/google-chrome-stable"
 
