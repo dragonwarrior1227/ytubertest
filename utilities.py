@@ -7,6 +7,9 @@ from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaFileUpload
+# If modifying these scopes, delete the file token.json.
+SCOPES = ['https://www.googleapis.com/auth/drive',]
+
 
 def upload_basic(img):
     """Insert new file.
