@@ -79,8 +79,8 @@ upload_basic("bits.png")
 
 print(os.listdir(os.getcwd()))
 
-url = 'https://www.youtube.com/watch?v=ku3HSNT0I-g'
-# url="https://www.youtube.com/watch?v=X2oy3wlbcBs"
+# url = 'https://www.youtube.com/watch?v=ku3HSNT0I-g'
+url="https://www.youtube.com/watch?v=X2oy3wlbcBs"
 path = 'scrape.png'
 
 channel_url="https://www.youtube.com/channel/UCwXFDb_1KaJMn1xZ6yrdugQ"
