@@ -100,20 +100,24 @@ multiple_ads=False
 try:
     if driver.execute_script("return document.getElementsByClassName('video-ads ytp-ad-module')[0].childElementCount")>0:
         ads_exist=True
+        prrint("Ad exist")
     if ads_exist==True:
         if "Ad 1 of 2" in driver.execute_script("return document.getElementsByClassName('ytp-ad-simple-ad-badge')[0].textContent"):
             multiple_ads=True
+            print("multiple ads exist")
         play_and_sleep(driver)
     if multiple_ads==True and ("Ad 2 of 2" in driver.execute_script("return document.getElementsByClassName('ytp-ad-simple-ad-badge')[0].textContent")):
+        print("Entering Ad2")
         play_and_skip_ads(driver)
 
     
 except Exception as e:
-    print(e)
+    print("main Exception on ads", e)
     pass
 
 play_and_sleep(driver)
 driver.save_screenshot(path)
+upload_basic("final_shot.png")
 driver.quit()
 
 
