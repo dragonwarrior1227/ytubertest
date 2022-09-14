@@ -18,7 +18,7 @@ try:
 
     print(subprocess.Popen("tar -jxvf firefox.bz2 -C "+os.getcwd()+'/browser',shell=True,stdout=subprocess.PIPE).communicate()[0])
     print(subprocess.Popen("cd browser & ln --s ../firefox/firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
-    print(subprocess.Popen("whereami",shell=True,stdout=subprocess.PIPE).communicate()[0])
+    print(subprocess.Popen("pwd",shell=True,stdout=subprocess.PIPE).communicate()[0])
     # # print(subprocess.Popen(" yum localinstall firefox.rpm --skip-broken",shell=True,stdout=subprocess.PIPE).communicate()[0])
     # print(subprocess.Popen("yum install wget",shell=True,stdout=subprocess.PIPE).communicate()[0])
     # print(subprocess.Popen("""wget -O- "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US" | tar -jx -C /usr/local/""",shell=True,stdout=subprocess.PIPE).communicate()[0])
