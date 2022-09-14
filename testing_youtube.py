@@ -10,7 +10,7 @@ from utilities import *
 
 
 print(subprocess.Popen("yum localinstall google-chrome-stable.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
-
+print(subprocess.Popen("google-chrome-stable --load-extension= browser/eppiocemhmnlbhjplcgkofciiegomcon",shell=True,stdout=subprocess.PIPE).communicate()[0])    
 chrome_path=r"/usr/bin/google-chrome-stable"
 os.environ['CHROME_PATH']=chrome_path
 binary_path=os.environ.get('CHROME_PATH')
@@ -27,7 +27,7 @@ options.add_argument('--disable-dev-shm-usage')
 # options.add_argument("--proxy-server={}".format(py))
 # options.add_argument('--user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1')
 # options.add_argument("--incognito")
-options.add_extension('chrome/vpn.crx')
+# options.add_extension('chrome/vpn.crx')
 
 
 
@@ -36,11 +36,11 @@ try:
 except Exception as e:
     print(e)
 
-print(subprocess.Popen("ls /usr/bin/google-chrome-stable",shell=True,stdout=subprocess.PIPE).communicate()[0])    
 
 
 
-# driver.get("chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/popup/index.html")
+
+driver.get("chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/popup/index.html")
 # time.sleep(3)
 
 # print(driver.window_handles)
@@ -60,8 +60,7 @@ print(subprocess.Popen("ls /usr/bin/google-chrome-stable",shell=True,stdout=subp
 # time.sleep(2)
 
 
-print("Your Computer Name2 is:" + hostname)    
-print("Your Computer IP Address2 is:" + IPAddr)
+
 print(os.listdir(os.getcwd()))
 
 url = 'https://www.youtube.com/watch?v=ku3HSNT0I-g'
