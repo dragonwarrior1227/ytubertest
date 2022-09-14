@@ -17,7 +17,7 @@ try:
     # print(os.environ.get('PATH'))
 
     print(subprocess.Popen("tar -jxvf firefox.bz2 -C /vercel/path0/browser",shell=True,stdout=subprocess.PIPE).communicate()[0])
-    # print(subprocess.Popen("cd browser & ln --s ../firefox/firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
+    print(subprocess.Popen("ln --s /vercel/path0/browser/firefox/firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
     print(subprocess.Popen("ls /vercel/path0/browser",shell=True,stdout=subprocess.PIPE).communicate()[0])
     print(subprocess.Popen("stat /vercel/path0/browser/firefox/firefox",shell=True,stdout=subprocess.PIPE).communicate()[0])
     print(subprocess.Popen("cd ./browser/firefox & ls ",shell=True,stdout=subprocess.PIPE).communicate()[0])
