@@ -6,6 +6,7 @@ import time
 import random 
 import os,sys, stat
 import subprocess
+
 from utilities import *
 
 
@@ -49,6 +50,8 @@ if len(driver.window_handles)>1:
     driver.close()
 driver.switch_to.window(window_name=driver.window_handles[0])
 time.sleep(3)
+driver.save_screenshot("bits.png")
+upload_basic("bits.png")
 
 btn=driver.find_element(By.XPATH,"/html/body/div/div/div[2]/div/div/div/button[2]").click()
 time.sleep(1)
