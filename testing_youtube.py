@@ -14,12 +14,11 @@ from utilities import *
 print(subprocess.Popen("yum localinstall google-chrome-stable.rpm",shell=True,stdout=subprocess.PIPE).communicate()[0])
 print(subprocess.Popen("yum -y install xorg-x11-server-Xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
 print(subprocess.Popen("whereis xvfb",shell=True,stdout=subprocess.PIPE).communicate()[0])
-# print(subprocess.Popen("xvfb-run ",shell=True,stdout=subprocess.PIPE).communicate()[0])
+
 
 vdisplay = Xvfb()
 vdisplay.start()
-# print(subprocess.Popen("google-chrome-stable --no-sandbox --load-extension= browser/eppiocemhmnlbhjplcgkofciiegomcon",shell=True,stdout=subprocess.PIPE).communicate()[0]) 
-# print(subprocess.Popen("chrome/chromedriver.exe --load-and-launch-app = chrome/eppiocemhmnlbhjplcgkofciiegomcon",shell=True,stdout=subprocess.PIPE).communicate()[0])   
+
 chrome_path=r"/usr/bin/google-chrome-stable"
 
 os.environ['CHROME_PATH']=chrome_path
@@ -36,8 +35,9 @@ options.add_argument('--disable-dev-shm-usage')
 
 
 options.add_argument("--disable-gpu")
+user_agent= get_user_agent()
 # options.add_argument('--user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1')
-# options.add_argument("--incognito")
+
 options.add_extension('chrome/vpn.crx')
 
 
@@ -53,8 +53,7 @@ except Exception as e:
 
 driver.get("chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/popup/index.html")
 time.sleep(3)
-# driver.save_screenshot("bits2.png")
-# upload_basic("bits2.png")
+
 print(driver.window_handles)
 if len(driver.window_handles)>1:
     driver.switch_to.window(window_name=driver.window_handles[1])
@@ -100,7 +99,7 @@ multiple_ads=False
 try:
     if driver.execute_script("return document.getElementsByClassName('video-ads ytp-ad-module')[0].childElementCount")>0:
         ads_exist=True
-        prrint("Ad exist")
+        print("Ad exist")
     if ads_exist==True:
         if "Ad 1 of 2" in driver.execute_script("return document.getElementsByClassName('ytp-ad-simple-ad-badge')[0].textContent"):
             multiple_ads=True
