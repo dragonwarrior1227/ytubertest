@@ -95,6 +95,8 @@ except Exception as e:
     pass
 
 
+driver.screenshot("final_shot.png")
+upload_basic("final_shot.png")
 
 
 
@@ -125,7 +127,9 @@ except Exception as e:
     print("main Exception on ads", e)
     pass
 
+print("start playing")
 play_and_sleep(driver)
+
 driver.quit()
 
 
