@@ -2,15 +2,15 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time,random,os,json
-import google.auth
-from google.oauth2.credentials import Credentials
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
-from googleapiclient.http import MediaFileUpload
+# import google.auth
+# from google.oauth2.credentials import Credentials
+# from googleapiclient.discovery import build
+# from googleapiclient.errors import HttpError
+# from googleapiclient.http import MediaFileUpload
 import pandas as pd
 
 # If modifying these scopes, delete the file token.json.
-SCOPES = ['https://www.googleapis.com/auth/drive',]
+# SCOPES = ['https://www.googleapis.com/auth/drive',]
 
 sheet_id=os.environ.get('SHEET_ID')
 
@@ -22,35 +22,35 @@ def read_sheet(sheet_name="Sheet1"):
 	print(df.head())
 	return df
 
-def upload_basic(img):
-    """Insert new file.
-    Returns : Id's of the file uploaded
+# def upload_basic(img):
+#     """Insert new file.
+#     Returns : Id's of the file uploaded
 
-    Load pre-authorized user credentials from the environment.
-    TODO(developer) - See https://developers.google.com/identity
-    for guides on implementing OAuth2 for the application.
-    """
-    creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+#     Load pre-authorized user credentials from the environment.
+#     TODO(developer) - See https://developers.google.com/identity
+#     for guides on implementing OAuth2 for the application.
+#     """
+#     creds = Credentials.from_authorized_user_file('token.json', SCOPES)
 
-    try:
-        # create drive api client
-        service = build('drive', 'v3', credentials=creds)
+#     try:
+#         # create drive api client
+#         service = build('drive', 'v3', credentials=creds)
 
-        file_metadata = {'name': img,'parents': ['1BbfqfiKbAcgPGpNv0Au4tZsmiUmCxe0H']}
-        media = MediaFileUpload(img,
-                                mimetype='image/png')
-        # pylint: disable=maybe-no-member
-        file = service.files().create(body=file_metadata, media_body=media,
-                                      fields='id').execute()
-        # file = service.files().update( media_body=media,
-        #                               fileId='1c7lRsb-sToy4_CsfcSH1m5Z4GYZtsIxr').execute()
-        print(F'File ID: {file.get("id")}')
+#         file_metadata = {'name': img,'parents': ['1BbfqfiKbAcgPGpNv0Au4tZsmiUmCxe0H']}
+#         media = MediaFileUpload(img,
+#                                 mimetype='image/png')
+#         # pylint: disable=maybe-no-member
+#         file = service.files().create(body=file_metadata, media_body=media,
+#                                       fields='id').execute()
+#         # file = service.files().update( media_body=media,
+#         #                               fileId='1c7lRsb-sToy4_CsfcSH1m5Z4GYZtsIxr').execute()
+#         print(F'File ID: {file.get("id")}')
 
-    except HttpError as error:
-        print(F'An error occurred: {error}')
-        file = None
+#     except HttpError as error:
+#         print(F'An error occurred: {error}')
+#         file = None
 
-    return file.get('id')
+#     return file.get('id')
 
 
 def set_driver_cookies(driver,vpn_id=2):

@@ -95,13 +95,11 @@ except Exception as e:
     pass
 
 
-driver.save_screenshot("final_shot.png")
-upload_basic("final_shot.png")
+# driver.save_screenshot("final_shot.png")
+# upload_basic("final_shot.png")
 
 
 
-# driver.get(url)
-# time.sleep(2)
 
 ads_exist=False
 multiple_ads=False
@@ -129,6 +127,7 @@ except Exception as e:
 
 print("start playing")
 play_and_sleep(driver)
+
 
 driver.quit()
 
