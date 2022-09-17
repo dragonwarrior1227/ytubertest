@@ -10,7 +10,7 @@ from googleapiclient.http import MediaFileUpload
 import pandas as pd
 
 # If modifying these scopes, delete the file token.json.
-# SCOPES = ['https://www.googleapis.com/auth/drive',]
+SCOPES = ['https://www.googleapis.com/auth/drive',]
 
 sheet_id=os.environ.get('SHEET_ID')
 
