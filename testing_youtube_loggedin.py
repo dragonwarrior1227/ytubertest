@@ -126,8 +126,6 @@ except Exception as e:
     pass
 
 play_and_sleep(driver)
-driver.save_screenshot("final_shot.png")
-upload_basic("final_shot.png")
 driver.quit()
 
 
