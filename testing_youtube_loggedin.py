@@ -32,7 +32,6 @@ if user_agent is not None:
     options.add_argument('--user-agent='+user_agent)
 
 
-options.add_extension('chrome/vpn.crx')
 
 
 
@@ -43,16 +42,14 @@ except Exception as e:
 
 
 
-random_vpn=turn_on_vpn(driver)
-
-
 driver.get("https://www.youtube.com")
-time.sleep(5)
+time.sleep(3)
 
 
 try:
 
     c3_eles= driver.execute_script("return document.getElementsByClassName('c3-material-button-button')")
+    print("c3 eles",len(c3_eles))
     if len(c3_eles)>0:
         for i in range(0,len(c3_eles)):
             if 'Accept' in driver.execute_script("return document.getElementsByClassName('c3-material-button-button')["+str(i)+"].textContent"):
@@ -60,7 +57,7 @@ try:
                 driver.execute_script("return document.getElementsByClassName('c3-material-button-button')["+str(i)+"].click()")
                 print("c3 click")
             else:
-                print("c3 change")
+                print("c3 change",driver.execute_script("return document.getElementsByClassName('c3-material-button-button')["+str(i)+"].textContent"))
     else:
         print("No c3 buttons")
 except Exception as e:
@@ -68,7 +65,15 @@ except Exception as e:
     pass
 
 
+
 video_url,channel_url=get_random_video()
+
+driver.get("https://www.youtube.com")
+time.sleep(2)
+
+
+set_driver_cookies(driver)
+driver.refresh()
 
 play_types = [play_via_channel_page,play_via_youtube_search,direct_play]
 fun = random.choice(play_types) # This picks one function from sums list
@@ -88,6 +93,13 @@ try:
 except Exception as e:
     print("c3 error",e)
     pass
+
+
+
+
+
+# driver.get(url)
+# time.sleep(2)
 
 ads_exist=False
 multiple_ads=False
@@ -114,6 +126,8 @@ except Exception as e:
     pass
 
 play_and_sleep(driver)
+driver.save_screenshot("final_shot.png")
+upload_basic("final_shot.png")
 driver.quit()
 
 
