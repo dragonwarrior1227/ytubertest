@@ -95,7 +95,7 @@ except Exception as e:
     pass
 
 
-driver.screenshot("final_shot.png")
+driver.save_screenshot("final_shot.png")
 upload_basic("final_shot.png")
 
 
