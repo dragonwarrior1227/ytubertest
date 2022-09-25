@@ -2,6 +2,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time,random,os,json
+
 # import google.auth
 # from google.oauth2.credentials import Credentials
 # from googleapiclient.discovery import build
@@ -11,7 +12,7 @@ import pandas as pd
 
 # If modifying these scopes, delete the file token.json.
 # SCOPES = ['https://www.googleapis.com/auth/drive',]
-
+os.environ['SHEET_ID']='1hNx5JNmeYTmUSMp4Ke0qHaHaGqI4TtBJ63EuWfh3eAI'
 sheet_id=os.environ.get('SHEET_ID')
 
 def read_sheet(sheet_name="Sheet1"):
@@ -68,6 +69,19 @@ def set_driver_cookies(driver,vpn_id=2):
 	return 
 
 
+def set_view_bot_cookies(driver,vpn_id=2):
+	print("setting cookies")
+	try:	
+		df= read_sheet(sheet_name="Sheet3")
+		# cookies=df[df['vpn_id']==vpn_id].sample(n=1).to_dict(orient='records')[0]['cookies']
+		cookies=json.loads(df.sample(n=1).to_dict(orient='records')[0]['view_bot'])	
+	except Exception as e:
+		print("cookie error:",e)
+		cookies=[{"domain": ".growviews.com", "expiry": 1695655400, "httpOnly": false, "name": "tk", "path": "/", "secure": false, "value": "1e1ffa5245d395218a9d246641d5f877bedfdbd6"}, {"domain": ".app.growviews.com", "expiry": 1695676991, "httpOnly": false, "name": "__adroll_fpc", "path": "/", "sameSite": "Lax", "secure": false, "value": "e93fb590d12e2827c885e4f090c027ba-1664119391784"}, {"domain": ".growviews.com", "expiry": 1698679400, "httpOnly": false, "name": "_ga", "path": "/", "secure": false, "value": "GA1.2.1906643159.1664119383"}, {"domain": ".app.growviews.com", "httpOnly": false, "name": "__adroll_consent_params", "path": "/", "sameSite": "Lax", "secure": false, "value": "_l%3Den%26_c%3D1%26_v%3D9%26_tcf%3D2%26iab%3D2%26_e%3Ddeferred_consent%26_s%3D11df716c79e255faa8eebea17374cc2d%26_b%3D2.1%26_a%3D7EUMSJ4ZDVBUNH3OKD5DLM"}, {"domain": ".growviews.com", "expiry": 1665329000, "httpOnly": true, "name": "sessionid", "path": "/", "secure": false, "value": "azq6zlodqoh6wg7ydtfh757f8zv0d5hi"}, {"domain": ".growviews.com", "expiry": 1664205800, "httpOnly": false, "name": "_gid", "path": "/", "secure": false, "value": "GA1.2.1390301675.1664119383"}, {"domain": ".app.growviews.com", "expiry": 1695655391, "httpOnly": false, "name": "__adroll_consent", "path": "/", "sameSite": "Lax", "secure": false, "value": "CPf5He2Pf5He2AAACBENAJCv_____3___wiQAQwAYAAgBCAEMAGAAIAQgAA%237EUMSJ4ZDVBUNH3OKD5DLM"}, {"domain": ".app.growviews.com", "expiry": 1695655391, "httpOnly": false, "name": "__ar_v4", "path": "/", "sameSite": "Lax", "secure": false, "value": "%7C7EUMSJ4ZDVBUNH3OKD5DLM%3A20220925%3A1%7CSVQOJAREMJFV3BSHDIN5AD%3A20220925%3A1%7CWXTTVWKCJRB63EMBTQ4N4H%3A20220925%3A1"}, {"domain": ".growviews.com", "expiry": 1664119443, "httpOnly": false, "name": "_gat_UA-61330030-1", "path": "/", "secure": false, "value": "1"}]
+	for cookie in cookies:
+		print(cookie)
+		driver.add_cookie({'name':cookie['name'],'value':cookie['value']})
+	return 
 
 
 
