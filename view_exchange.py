@@ -116,9 +116,21 @@ try:
 except:
 	print("run button error")
 
-time.sleep(15)
+time.sleep(5)
 
-for i in range(8):
+for i in range(10):
+	try:
+		btns=driver.execute_script("return document.getElementsByTagName('button')")
+		print("cliked run")
+		if len(btns)>0:
+			for i in range(0,len(btns)):
+				if 'RUN' in driver.execute_script("return document.getElementsByTagName('button')["+str(i)+"].textContent"):
+					driver.execute_script("return document.getElementsByTagName('button')["+str(i)+"].click()")
+		else:
+			print('no buttons')
+	except:
+		print("tried failed or already running")
+
 	driver.save_screenshot("final.png")
 	upload_basic("final.png")
 
