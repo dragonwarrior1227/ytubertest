@@ -92,7 +92,7 @@ time.sleep(2)
 # driver.refresh()
 # time.sleep(2)
 
-
+print("loading")
 try:	
 	driver.execute_script("return document.getElementById('adroll_allow_all').click()")
 	ele=driver.execute_script("return document.forms[0].children[0].children[0]")
@@ -104,7 +104,9 @@ try:
 	time.sleep(3)
 	driver.get("https://app.growviews.com/")
 	time.sleep(2)
+	print("clicking run")
 	btns=driver.execute_script("return document.getElementsByTagName('button')")
+	print("cliked run")
 	if len(btns)>0:
 		for i in range(0,len(btns)):
 			if 'RUN' in driver.execute_script("return document.getElementsByTagName('button')["+str(i)+"].textContent"):
