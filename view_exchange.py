@@ -118,7 +118,7 @@ except:
 
 time.sleep(15)
 
-for i in range(15):
+for i in range(8):
 	driver.save_screenshot("final.png")
 	upload_basic("final.png")
 
