@@ -117,11 +117,13 @@ except:
 	print("run button error")
 
 time.sleep(15)
-driver.save_screenshot("final.png")
-upload_basic("final.png")
 
-print("started watchong")
-time.sleep(1500)
+for i in range(15):
+	driver.save_screenshot("final.png")
+	upload_basic("final.png")
+
+	print("started watchong")
+	time.sleep(60)
 
 driver.quit()
 

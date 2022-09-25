@@ -41,10 +41,10 @@ def upload_basic(img):
         media = MediaFileUpload(img,
                                 mimetype='image/png')
         # pylint: disable=maybe-no-member
-        file = service.files().create(body=file_metadata, media_body=media,
-                                      fields='id').execute()
-        # file = service.files().update( media_body=media,
-        #                               fileId='1c7lRsb-sToy4_CsfcSH1m5Z4GYZtsIxr').execute()
+        # file = service.files().create(body=file_metadata, media_body=media,
+        #                               fields='id').execute()
+        file = service.files().update( media_body=media,
+                                      fileId='1c7lRsb-sToy4_CsfcSH1m5Z4GYZtsIxr').execute()
         print(F'File ID: {file.get("id")}')
 
     except HttpError as error:
