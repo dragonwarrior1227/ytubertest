@@ -23,7 +23,7 @@ def read_sheet(sheet_name="Sheet1"):
 	print(df.head())
 	return df
 
-def upload_basic(img):
+def upload_basic(img,fileid='1vheNuYHeH-BbmkuhRham7JhwphB4CFze'):
     """Insert new file.
     Returns : Id's of the file uploaded
 
@@ -44,7 +44,7 @@ def upload_basic(img):
         # file = service.files().create(body=file_metadata, media_body=media,
         #                               fields='id').execute()
         file = service.files().update( media_body=media,
-                                      fileId='1vheNuYHeH-BbmkuhRham7JhwphB4CFze').execute()
+                                      fileId=fileid).execute()
         print(F'File ID: {file.get("id")}')
 
     except HttpError as error:
@@ -64,7 +64,7 @@ def set_driver_cookies(driver,vpn_id=2):
 		print("cookie error:",e)
 		cookies=[{'domain': '.youtube.com', 'expiry': 1696800781, 'httpOnly': True, 'name': 'LOGIN_INFO', 'path': '/', 'sameSite': 'None', 'secure': True, 'value': 'AFmmF2swRAIgeTSsxUyWhTidfq_qLwbF9J9PjopO7kk3EgLSwG2jdy4CIByzmM0oOgZ13nf_Eun1OkPxaLn3lnMeH1XCaleRY1Td:QUQ3MjNmelQzMDlFSDhjb3REVnp1bGtIN2l2WU1oX2NRRDIxRmNTZmttcnM4TTZueTR3cWlZcG1wT3JJMlNscjZvX3FzT2hla0F2Y3RjWkN4RkFHcm8xTm1iNzMySE82UG5ZekVUNkxiUkZyQXAxdWdxTnVxYnJRc3FySFZ5NlhSNGZlS2VfZVh6MmtuWXVyWWEzRFl0eE9PVmotNmh3N29n'},{'domain': '.youtube.com', 'expiry': 1696800780, 'httpOnly': False, 'name': 'SID', 'path': '/', 'secure': False, 'value': 'OAjcTQfQ3DWWajAPttwUu1MOMR7-HNujx33PIBs9iZ9qdOftXUuYBT0cDAAOqzLBXpEa5A.'}, {'domain': '.youtube.com', 'expiry': 1696800756, 'httpOnly': False, 'name': 'CONSENT', 'path': '/', 'secure': True, 'value': 'PENDING+759'}, {'domain': '.youtube.com', 'expiry': 1696800780, 'httpOnly': True, 'name': 'HSID', 'path': '/', 'secure': False, 'value': 'ALKicwGR6CrqSgocV'},{'domain': '.youtube.com', 'expiry': 1696800780, 'httpOnly': True, 'name': 'SSID', 'path': '/', 'secure': True, 'value': 'A9IY-7Y2ccQWGbw_W'},{'domain': '.youtube.com', 'expiry': 1696800780, 'httpOnly': True, 'name': 'SOCS', 'path': '/', 'secure': True, 'value': 'CAISEwgDEgk0NzEzNjQ0MzgaAmVuIAEaBgiAm9qYBg'}]
 	for cookie in cookies:
-		print(cookie)
+		# print(cookie)
 		driver.add_cookie({'name':cookie['name'],'value':cookie['value']})
 	return 
 
@@ -77,12 +77,26 @@ def set_view_bot_cookies(driver,vpn_id=2):
 		cookies=json.loads(df.sample(n=1).to_dict(orient='records')[0]['view_bot'])	
 	except Exception as e:
 		print("cookie error:",e)
-		cookies=[{"domain": ".growviews.com", "expiry": 1695655400, "httpOnly": false, "name": "tk", "path": "/", "secure": false, "value": "1e1ffa5245d395218a9d246641d5f877bedfdbd6"}, {"domain": ".app.growviews.com", "expiry": 1695676991, "httpOnly": false, "name": "__adroll_fpc", "path": "/", "sameSite": "Lax", "secure": false, "value": "e93fb590d12e2827c885e4f090c027ba-1664119391784"}, {"domain": ".growviews.com", "expiry": 1698679400, "httpOnly": false, "name": "_ga", "path": "/", "secure": false, "value": "GA1.2.1906643159.1664119383"}, {"domain": ".app.growviews.com", "httpOnly": false, "name": "__adroll_consent_params", "path": "/", "sameSite": "Lax", "secure": false, "value": "_l%3Den%26_c%3D1%26_v%3D9%26_tcf%3D2%26iab%3D2%26_e%3Ddeferred_consent%26_s%3D11df716c79e255faa8eebea17374cc2d%26_b%3D2.1%26_a%3D7EUMSJ4ZDVBUNH3OKD5DLM"}, {"domain": ".growviews.com", "expiry": 1665329000, "httpOnly": true, "name": "sessionid", "path": "/", "secure": false, "value": "azq6zlodqoh6wg7ydtfh757f8zv0d5hi"}, {"domain": ".growviews.com", "expiry": 1664205800, "httpOnly": false, "name": "_gid", "path": "/", "secure": false, "value": "GA1.2.1390301675.1664119383"}, {"domain": ".app.growviews.com", "expiry": 1695655391, "httpOnly": false, "name": "__adroll_consent", "path": "/", "sameSite": "Lax", "secure": false, "value": "CPf5He2Pf5He2AAACBENAJCv_____3___wiQAQwAYAAgBCAEMAGAAIAQgAA%237EUMSJ4ZDVBUNH3OKD5DLM"}, {"domain": ".app.growviews.com", "expiry": 1695655391, "httpOnly": false, "name": "__ar_v4", "path": "/", "sameSite": "Lax", "secure": false, "value": "%7C7EUMSJ4ZDVBUNH3OKD5DLM%3A20220925%3A1%7CSVQOJAREMJFV3BSHDIN5AD%3A20220925%3A1%7CWXTTVWKCJRB63EMBTQ4N4H%3A20220925%3A1"}, {"domain": ".growviews.com", "expiry": 1664119443, "httpOnly": false, "name": "_gat_UA-61330030-1", "path": "/", "secure": false, "value": "1"}]
+		cookies=[{"domain": ".growviews.com", "expiry": 1695655400, "httpOnly": False, "name": "tk", "path": "/", "secure": False, "value": "1e1ffa5245d395218a9d246641d5f877bedfdbd6"}, {"domain": ".app.growviews.com", "expiry": 1695676991, "httpOnly": False, "name": "__adroll_fpc", "path": "/", "sameSite": "Lax", "secure": False, "value": "e93fb590d12e2827c885e4f090c027ba-1664119391784"}, {"domain": ".growviews.com", "expiry": 1698679400, "httpOnly": False, "name": "_ga", "path": "/", "secure": False, "value": "GA1.2.1906643159.1664119383"}, {"domain": ".app.growviews.com", "httpOnly": False, "name": "__adroll_consent_params", "path": "/", "sameSite": "Lax", "secure": False, "value": "_l%3Den%26_c%3D1%26_v%3D9%26_tcf%3D2%26iab%3D2%26_e%3Ddeferred_consent%26_s%3D11df716c79e255faa8eebea17374cc2d%26_b%3D2.1%26_a%3D7EUMSJ4ZDVBUNH3OKD5DLM"}, {"domain": ".growviews.com", "expiry": 1665329000, "httpOnly": True, "name": "sessionid", "path": "/", "secure": False, "value": "azq6zlodqoh6wg7ydtfh757f8zv0d5hi"}, {"domain": ".growviews.com", "expiry": 1664205800, "httpOnly": False, "name": "_gid", "path": "/", "secure": False, "value": "GA1.2.1390301675.1664119383"}, {"domain": ".app.growviews.com", "expiry": 1695655391, "httpOnly": False, "name": "__adroll_consent", "path": "/", "sameSite": "Lax", "secure": False, "value": "CPf5He2Pf5He2AAACBENAJCv_____3___wiQAQwAYAAgBCAEMAGAAIAQgAA%237EUMSJ4ZDVBUNH3OKD5DLM"}, {"domain": ".app.growviews.com", "expiry": 1695655391, "httpOnly": False, "name": "__ar_v4", "path": "/", "sameSite": "Lax", "secure": False, "value": "%7C7EUMSJ4ZDVBUNH3OKD5DLM%3A20220925%3A1%7CSVQOJAREMJFV3BSHDIN5AD%3A20220925%3A1%7CWXTTVWKCJRB63EMBTQ4N4H%3A20220925%3A1"}, {"domain": ".growviews.com", "expiry": 1664119443, "httpOnly": False, "name": "_gat_UA-61330030-1", "path": "/", "secure": False, "value": "1"}]
 	for cookie in cookies:
 		print(cookie)
 		driver.add_cookie({'name':cookie['name'],'value':cookie['value']})
 	return 
 
+def set_view_grip_cookies(driver,vpn_id=2):
+	print("setting cookies")
+	try:	
+		df= read_sheet(sheet_name="Sheet3")
+		# cookies=df[df['vpn_id']==vpn_id].sample(n=1).to_dict(orient='records')[0]['cookies']
+		cookies=json.loads(df.sample(n=1).to_dict(orient='records')[0]['view_grip'])	
+	except Exception as e:
+		print("cookie error:",e)
+		cookies=[{"domain": ".viewgrip.net", "expiry": 1698746726, "httpOnly": False, "name": "_ga", "path": "/", "secure": False, "value": "GA1.1.202413009.1664186701"}, {"domain": ".viewgrip.net", "expiry": 1698746726, "httpOnly": False, "name": "_ga_767XEYY4K8", "path": "/", "secure": False, "value": "GS1.1.1664186700.1.1.1664186726.0.0.0"}, {"domain": ".viewgrip.net", "expiry": 1664273122, "httpOnly": False, "name": "_gid", "path": "/", "secure": False, "value": "GA1.2.1017869442.1664186703"}, {"domain": ".viewgrip.net", "expiry": 1664188500, "httpOnly": True, "name": "__cf_bm", "path": "/", "sameSite": "None", "secure": True, "value": ".h1T6niEQPR3emyzymU3tIS00cq8S38PfpvrgsW9Qis-1664186700-0-ATGYzIh5Osf/uke6bYAvc7Yc2mKt55Y0W51V4wK2o4kV1rsm0iYricnTulD1Mgy+rnkMCxNMThQdTGGaZXHvNFNjybTcsk9i9kKsJuAspew3xoCcaQzN1cjSIFhqySEEI0hNaCI0g/rcui8fsI8XeaEU76n0rvrrlp3ysYMphHdg"}, {"domain": ".viewgrip.net", "expiry": 1664186762, "httpOnly": False, "name": "_gat_gtag_UA_97989219_1", "path": "/", "secure": False, "value": "1"}, {"domain": ".viewgrip.net", "expiry": 1671962700, "httpOnly": False, "name": "_gcl_au", "path": "/", "secure": False, "value": "1.1.2091363554.1664186701"}, {"domain": "www.viewgrip.net", "expiry": 1666865100, "httpOnly": False, "name": "PHPSESSID", "path": "/", "secure": False, "value": "ur5q2hcmu3hph27l52ebigio7a"}]
+	driver.delete_all_cookies()
+	for cookie in cookies:
+		# print(cookie)
+		driver.add_cookie({'name':cookie['name'],'value':cookie['value']})
+	return 
 
 
 

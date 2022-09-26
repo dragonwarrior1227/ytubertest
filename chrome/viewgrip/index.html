@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div class="card text-white bg-dark mb" style="width: 300px;">
+  <div class="card-header"><h5 class="card-title">ViewGrip v1.0.3 - Chrome</h5></div>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><span id="main_nav"></span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Coupon</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Navigation</a>
+  </li>
+</ul>
+<div class="card-body">
+<div class="tab-content">
+  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  <div id="noconnection">
+  <div id="syncing"></div>
+  <form id="theform">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Username</label>
+    <input type="text" class="form-control" id="uniqueID" placeholder="Enter Username" required>
+  </div>
+    <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off" required>
+	 <small><p class="text-right"><a id="donate-link" href="https://www.viewgrip.net/recover.php" title="Forgot password?" target="_blank"><b>Forgot Password</b></a></p></small>
+  </div>
+<input type="submit" value="Login" class="btn btn-primary" id="submitButton" />
+</form>
+    <div id="message">
+	 <div id="noconection">
+    <div id="datainfo">
+<ul class="list-group bg-dark">
+  <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+    <b class="simple-icon-user"> User</b>
+    <span id="user" class="text-primary"><img src="img/loader.gif" alt="Requesting data"></span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+    <b class="simple-icon-cup"> Coins</b>
+    <span id="credit" class="text-info"><img src="img/loader.gif" alt="Requesting data"></span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+    <b class="simple-icon-wallet"> Balance</b>
+    <span id="balance" class="text-success"><img src="img/loader.gif" alt="Requesting data"></span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+    <b class="simple-icon-rocket"> Worker</b>
+    <span id="type" class="text-danger"><img src="img/loader.gif" alt="Requesting data"></span>
+  </li>
+</ul>
+	</div>
+	</div>
+	</div>
+	</div>
+  </div>
+  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  <div id="nologin">
+       <div id="noconection">
+<ul class="list-group bg-dark">
+  <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+    <b class="simple-icon-key"> Coupon</b>
+    <span id="code" class="text-success"><img src="img/loader.gif" alt="Requesting data"></span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+    <b class="simple-icon-present"> Reward</b>
+    <span id="reward" class="text-info"><img src="img/loader.gif" alt="Requesting data"></span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+    <b class="simple-icon-lock-open"> Required</b>
+    <span id="req" class="text-info"><img src="img/loader.gif" alt="Requesting data"></span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+    <b class="simple-icon-info"> Status</b>
+     <span id="status" class="text-info"><img src="img/loader.gif" alt="Requesting data"></span>
+  </li>
+</ul>
+	</div>
+</div>
+  </div>
+  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+  <div id="nologin2">
+       <div id="noconection">
+    <ul class="list-group list-group-flush" style="background-color:#343a40;">
+    <li class="list-group-item" style="background-color:#343a40;"><span id="notify"><i class="simple-icon-home"></i> <a href="https://www.viewgrip.net/dashboard.php" target="_blank">DashBoard</a></span></li>
+	<li class="list-group-item" style="background-color:#343a40;"><span id="notify"><i class="simple-icon-plus"></i> <a href="https://www.viewgrip.net/addvideo.php" target="_blank">Create Campaign</a></span></li>
+	<li class="list-group-item" style="background-color:#343a40;"><span id="notify"><i class="simple-icon-social-youtube"></i> <a href="https://www.viewgrip.net/campaign.php?user=views" target="_blank">My Campaign</a></span></li>
+	<li class="list-group-item" style="background-color:#343a40;"><span id="notify"><i class="simple-icon-organization"></i> <a href="https://www.viewgrip.net/leaderboard.php" target="_blank">Leaderboard</a></span></li>
+	</ul>
+	</div>
+</div>
+	</div>
+</div>
+  <hr>
+   <div id="logout">
+	<input type="button" value="Open Worker" class="btn btn-primary" id="openclient" /> <input type="button" id="logoutbutton" class="btn btn-primary" value="Logout" /> 
+  </div>
+ <div id="join">
+<p class="card-text">Don't have account? <a id="donate-link" href="https://www.viewgrip.net" title="Join Now" target="_blank"><b>Join Now</b></a></p>
+   </div>
+  </div>
+</div>
+	<script src="assets/plugins/jquery-3.6.0.js"></script>
+	<script src="assets/ajax.js"></script>
+	<script src="assets/plugins/bootstrap.js"></script>
+</body>
+</html>
+
+
