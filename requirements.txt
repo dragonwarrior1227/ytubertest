@@ -1,4 +1,4 @@
-selenium==4.3.0
+selenium
 webdriver-manager
 google-api-python-client
 google-auth-httplib2 
